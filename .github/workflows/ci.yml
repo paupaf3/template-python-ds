@@ -1,0 +1,31 @@
+name: Test project on push or pull request to main
+
+# Trigger the workflow on pushes or pull requests to the main branch
+on:
+    push:
+        branches: ["main"]
+    pull_request:
+        branches: ["main"]
+    workflow_dispatch:
+
+jobs:
+    build:
+        # Define the operating system for the runner
+        runs-on: ubuntu-latest
+
+        steps:
+            # Step 1: Check out your repository code
+            - name: Checkout code
+              uses: actions/checkout@v4
+            
+            # Step 2: Set up Python env
+            - name: Set up Python
+              run: make setup
+
+            # Step 3: Install dependencies
+            - name: Install dependencies
+              run: make install
+
+            # Step 4: Run tests
+            - name: Run tests
+              run: make test
