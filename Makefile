@@ -13,6 +13,7 @@ help:
 	@echo "  make format   - Formats the code using black"
 	@echo "  make lint     - Lints the code using ruff"
 	@echo "  make run      - Runs the main script"
+	@echo "  make test     - Runs the tests"
 	@echo ""
 
 # Creates the virtual environment
@@ -36,6 +37,11 @@ format:
 lint:
 	@echo "Linting code..."
 	. .venv/bin/activate && ruff check src/ tests/
+
+# Runs the tests
+test:
+	@echo "Running tests..."
+	. .venv/bin/activate && pytest tests/
 
 # Runs the main script
 run:
